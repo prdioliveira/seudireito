@@ -52,7 +52,7 @@
                         <a href="#"><i class="fa fa-sitemap fa-3x"></i> Ordem De Serviço <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="#">Second Level Link</a>
+                                <a href="/ordem-servico/">Cadastrar OS</a>
                             </li>
                             <li>
                                 <a href="#">Second Level Link</a>
@@ -74,5 +74,12 @@
         <script src="{% static 'js/jquery.metisMenu.js' %}"></script>
         <!-- CUSTOM SCRIPTS -->
         <script src="{% static 'js/custom.js' %}"></script>
+        <script src="{% static 'js/dataTables/jquery.dataTables.js' %}"></script>
+        <script src="{% static 'js/dataTables/dataTables.bootstrap.js' %}"></script>
+        <script>
+            $(document).ready(function () {
+                $('#dataTables-example').dataTable();
+            });
+    </script>
     </body>
 </html>

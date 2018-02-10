@@ -2,7 +2,7 @@
 {% load app_extras %}
 
 {% block title %}
-    Cadastro de Advogados
+    Cadastro de Ordem de Serviço
 {% endblock %}
 {% block content %}
     <div id="page-wrapper" >
@@ -13,7 +13,7 @@
                     <!-- Form Elements -->
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Cadastro de Adovgado
+                            Cadastro de Ordem de Serviço
                         </div>
 
                         <div class="panel-body">
@@ -22,18 +22,18 @@
                                     <form role="form" method="post">
                                         {% csrf_token %}
                                         <div class="form-group">
-                                            <label>Nome</label>
-                                            {{ form.nome_advogado|addcss:"form-control"}}
+                                            <label>Empresas</label>
+                                                {{ form.empresa|addcss:"form-control" }}
                                         </div>
 
                                         <div class="form-group">
-                                            <label>Email</label>
-                                            {{ form.email|addcss:"form-control"}}
+                                            <label>Título</label>
+                                            {{ form.titulo|addcss:"form-control"}}
                                         </div>
 
                                         <div class="form-group">
-                                            <label>CPF</label>
-                                            {{ form.cpf|addcss:"form-control"}}
+                                            <label>Descrição</label>
+                                            {{ form.descricao|addcss:"form-control"}}
                                         </div>
 
                                         <button type="submit" class="btn btn-primary">Gravar</button>
@@ -52,7 +52,7 @@
             <!-- Advanced Tables -->
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Advogados
+                    Ordens de Serviço
                 </div>
 
                 <div class="panel-body">
@@ -61,20 +61,20 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Nome</th>
-                                    <th>Email</th>
-                                    <th>CPF</th>
-                                    <th>Editar</th>
+                                    <th>Empresa</th>
+                                    <th>Titulo</th>
+                                    <th>Descrição</th>
+                                    <th>Status</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {% for adv in advogados %}
+                                {% for os in ordem_servico %}
                                     <tr class="odd gradeX">
-                                        <td>{{ adv.id }}</td>
-                                        <td>{{ adv.nome_advogado }}</td>
-                                        <td>{{ adv.email }}</td>
-                                        <td>{{ adv.cpf }}</td>
-                                        <td class="center">4</td>
+                                        <td>{{ os.id }}</td>
+                                        <td>{{ os.empresa }}</td>
+                                        <td>{{ os.titulo }}</td>
+                                        <td>{{ os.descricao }}</td>
+                                        <td>{{ os.status }}</td>
                                     </tr>
                                 {% endfor %}
                             </tbody>

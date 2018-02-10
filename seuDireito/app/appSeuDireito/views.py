@@ -1,6 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect
 from .forms import AdvogadoForm, EmpresaForm
+from .models import Advogado, Empresa, Status
+from .models import OrdemServico
+from .forms import OrdemServicoForm
 
 
 def index(request):
@@ -15,7 +18,8 @@ def advogado_cadastro(request):
             return HttpResponseRedirect('/advogado/')
     else:
         form = AdvogadoForm()
-        return render(request, 'cad_advogado.html', {'form': form})
+        advogados = Advogado.objects.all()
+        return render(request, 'cad_advogado.html', {'form': form, 'advogados': advogados})
 
 
 def empresa_cadastro(request):
@@ -26,4 +30,19 @@ def empresa_cadastro(request):
             return HttpResponseRedirect('/empresa/')
     else:
         form = EmpresaForm()
-        return render(request, 'cad_empresa.html', {'form': form})
+        empresas = Empresa.objects.all()
+        return render(request, 'cad_empresa.html', {'form': form, 'empresas': empresas})
+
+
+def ordem_servico_cadastro(request):
+    if request.method == 'POST':
+        form = OrdemServicoForm(request.POST)
+        if form.is_valid():
+            os = form.save(commit=False)
+            os.status_id = Status.objects.get(pk=1).id
+            os.save()
+            return redirect('/ordem-servico/')
+    else:
+        form = OrdemServicoForm()
+        ordem_servico = OrdemServico.objects.all()
+        return render(request, 'cad_os.html', {'form': form, 'ordem_servico': ordem_servico})

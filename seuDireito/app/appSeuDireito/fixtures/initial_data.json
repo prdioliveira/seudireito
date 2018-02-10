@@ -1,0 +1,23 @@
+[
+  {
+    "model": "appSeuDireito.Status",
+    "pk": 1,
+    "fields": {
+      "status": "Criada"
+    }
+  },
+  {
+    "model": "appSeuDireito.Status",
+    "pk": 2,
+    "fields": {
+      "status": "Delegada"
+    }
+  },
+  {
+    "model": "appSeuDireito.Status",
+    "pk": 3,
+    "fields": {
+      "status": "Finalizada"
+    }
+  }
+]

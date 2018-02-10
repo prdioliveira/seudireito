@@ -1,4 +1,4 @@
-from seuDireito.settings.base import *
+from .base import *
 import sys
 
 SERVER_PORT = 8000

@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from .forms import AdvogadoForm, EmpresaForm
+from .models import Advogado, Empresa
 
 
 def index(request):
@@ -15,7 +16,8 @@ def advogado_cadastro(request):
             return HttpResponseRedirect('/advogado/')
     else:
         form = AdvogadoForm()
-        return render(request, 'cad_advogado.html', {'form': form})
+        advogados = Advogado.objects.all()
+        return render(request, 'cad_advogado.html', {'form': form, 'advogados': advogados})
 
 
 def empresa_cadastro(request):
@@ -26,4 +28,5 @@ def empresa_cadastro(request):
             return HttpResponseRedirect('/empresa/')
     else:
         form = EmpresaForm()
-        return render(request, 'cad_empresa.html', {'form': form})
+        empresas = Empresa.objects.all()
+        return render(request, 'cad_empresa.html', {'form': form, 'empresas': empresas})

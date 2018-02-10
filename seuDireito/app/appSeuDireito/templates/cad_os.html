@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% load app_extras %}
+
+{% block title %}
+    Cadastro de Ordem de Serviço
+{% endblock %}
+{% block content %}
+    <div id="page-wrapper" >
+        <div id="page-inner">
+            <!-- /. ROW  -->
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- Form Elements -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Cadastro de Ordem de Serviço
+                        </div>
+
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <form role="form" method="post">
+                                        {% csrf_token %}
+                                        <div class="form-group">
+                                            <label>Empresas</label>
+                                                {{ form.empresa|addcss:"form-control" }}
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Título</label>
+                                            {{ form.titulo|addcss:"form-control"}}
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Descrição</label>
+                                            {{ form.descricao|addcss:"form-control"}}
+                                        </div>
+
+                                        <button type="submit" class="btn btn-primary">Gravar</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Form Elements -->
+                </div>
+            </div>
+
+            <!-- Data Table -->
+            <hr />
+
+            <!-- Advanced Tables -->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Ordens de Serviço
+                </div>
+
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Empresa</th>
+                                    <th>Titulo</th>
+                                    <th>Descrição</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for os in ordem_servico %}
+                                    <tr class="odd gradeX">
+                                        <td>{{ os.id }}</td>
+                                        <td>{{ os.empresa }}</td>
+                                        <td>{{ os.titulo }}</td>
+                                        <td>{{ os.descricao }}</td>
+                                        <td>{{ os.status }}</td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!--End Advanced Tables -->
+        </div>
+    </div>
+
+{% endblock %}

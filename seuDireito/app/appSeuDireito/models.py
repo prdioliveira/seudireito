@@ -16,3 +16,20 @@ class Empresa(models.Model):
 
     def __str__(self):
         return self.nome_empresa
+
+
+class Status(models.Model):
+    status = models.CharField(max_length=30, blank=True)
+
+    def __str__(self):
+        return self.status
+
+
+class OrdemServico(models.Model):
+    empresa = models.ForeignKey(Empresa)
+    titulo = models.CharField(max_length=100, null=False)
+    descricao = models.TextField(max_length=1024, null=False)
+    status = models.ForeignKey(Status)
+
+    def __str__(self):
+        return self.titulo

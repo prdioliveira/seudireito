@@ -9,6 +9,9 @@ class Advogado(models.Model):
     def __str__(self):
         return self.nome_advogado
 
+    class Meta:
+        db_table = 'advogado'
+
 
 class Empresa(models.Model):
     nome_empresa = models.CharField(max_length=100, null=False)
@@ -17,12 +20,18 @@ class Empresa(models.Model):
     def __str__(self):
         return self.nome_empresa
 
+    class Meta:
+        db_table = 'empresa'
+
 
 class Status(models.Model):
     status = models.CharField(max_length=30, blank=True)
 
     def __str__(self):
         return self.status
+
+    class Meta:
+        db_table = 'status'
 
 
 class OrdemServico(models.Model):
@@ -33,3 +42,18 @@ class OrdemServico(models.Model):
 
     def __str__(self):
         return self.titulo
+
+    class Meta:
+        db_table = 'ordem_servico'
+
+
+class Proposta(models.Model):
+    ordem_servico = models.ForeignKey(OrdemServico)
+    advogado = models.ForeignKey(Advogado)
+    valor_proposta = models.CharField(max_length=10)
+
+    def __str__(self):
+        return self.valor_proposta
+
+    class Meta:
+        db_table = 'proposta'

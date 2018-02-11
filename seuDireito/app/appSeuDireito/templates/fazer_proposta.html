@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% load app_extras %}
+
+{% block title %}
+    Cadastro de Proposta
+{% endblock %}
+{% block content %}
+    <div id="page-wrapper" >
+        <div id="page-inner">
+            <!-- /. ROW  -->
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- Form Elements -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Propostas para Ordem de Serviço
+                        </div>
+
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <form role="form" method="post">
+                                        {% csrf_token %}
+                                        <div class="form-group">
+                                            <label>Ordem de Servico:</label>
+                                            {{ ordem.titulo }}
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Descrição:</label>
+                                            {{ ordem.descricao }}
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Fazer Proposta com o Advogado</label>
+                                            {{ form.advogado|addcss:"form-control"}}
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Valor da Proposta</label>
+                                            {{ form.valor_proposta|addcss:"form-control"}}
+                                        </div>
+
+                                        <button type="submit" class="btn btn-primary">Gravar</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Form Elements -->
+                </div>
+            </div>
+
+            <!-- Data Table -->
+            <hr />
+
+            <!-- Advanced Tables -->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Ordens de Serviço
+                </div>
+
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Empresa</th>
+                                    <th>Ordem de Servico</th>
+                                    <th>Valor</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for prop in propostas %}
+                                    <tr class="odd gradeX">
+                                        <td>{{ prop.id }}</td>
+                                        <td>{{ prop.advogado }}</td>
+                                        <td>{{ prop.ordem_servico }}</td>
+                                        <td>{{ prop.valor_proposta }}</td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!--End Advanced Tables -->
+        </div>
+    </div>
+
+{% endblock %}

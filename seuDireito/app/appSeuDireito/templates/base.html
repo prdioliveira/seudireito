@@ -1,4 +1,5 @@
 {% load static %}
+{% load static from staticfiles %}
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
@@ -55,7 +56,7 @@
                                 <a href="/ordem-servico/">Cadastrar OS</a>
                             </li>
                             <li>
-                                <a href="#">Second Level Link</a>
+                                <a href="{% url 'appSeuDireito:os_list' %}">Propostas</a>
                             </li>
                         </ul>
                     </li>

@@ -51,6 +51,7 @@ class Proposta(models.Model):
     ordem_servico = models.ForeignKey(OrdemServico)
     advogado = models.ForeignKey(Advogado)
     valor_proposta = models.CharField(max_length=10)
+    aceita = models.NullBooleanField(null=True)
 
     def __str__(self):
         return self.valor_proposta

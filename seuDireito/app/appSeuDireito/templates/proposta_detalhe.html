@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load app_extras %}
+
+{% block title %}
+    Cadastro de Proposta
+{% endblock %}
+{% block content %}
+    <div id="page-wrapper" >
+        <div id="page-inner">
+            <!-- /. ROW  -->
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- Form Elements -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Propostas para Ordem de Serviço
+                        </div>
+
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <form role="form" method="post">
+                                        {% csrf_token %}
+                                        <div class="form-group">
+                                            <h2>{{ proposta.ordem_servico }}</h2>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Descrição: </label>
+                                            {{ proposta.ordem_servico.descricao }}
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Advogado: </label>
+                                            {{ proposta.advogado}}
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Valor da Proposta: </label>
+                                            {{ proposta.valor_proposta}}
+                                        </div>
+
+                                        <button type="submit" class="btn btn-primary">Delegar</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Form Elements -->
+                </div>
+            </div>
+            <!-- Data Table -->
+        </div>
+    </div>
+
+{% endblock %}

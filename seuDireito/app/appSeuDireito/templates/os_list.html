@@ -36,7 +36,7 @@
                                             <td>{{ os.titulo }}</td>
                                             <td>{{ os.descricao }}</td>
                                             <td>{{ os.status }}</td>
-                                            <td align="center"><a class="btn btn-default" href="{% url 'appSeuDireito:get_proposta' pk=os.pk %}">Fazer Proposta</a></td>
+                                            <td align="center"><a class="btn btn-default" href="{% url 'appSeuDireito:get_proposta' ordem_servico_id=os.pk %}">Fazer Proposta</a></td>
                                         </tr>
                                     {% endfor %}
                                     </tbody>

@@ -15,7 +15,7 @@ def advogado_cadastro(request):
         form = AdvogadoForm(request.POST)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect('appSeuDireito:get_advogado')
+            return redirect('appSeuDireito:get_advogado')
     else:
         form = AdvogadoForm()
         advogados = Advogado.objects.all()
@@ -89,19 +89,32 @@ def os_list(request):
     return render(request, 'os_list.html', {'ordem_servico': ordem_servico})
 
 
-def fazer_proposta_ordem_servico(request, pk):
+def fazer_proposta_ordem_servico(request, ordem_servico_id):
     if request.method == 'POST':
         form = PropostaForm(request.POST)
         if form.is_valid():
             proposta = form.save(commit=False)
-            proposta.ordem_servico_id = pk
+            proposta.ordem_servico_id = ordem_servico_id
             proposta.save()
             return redirect('appSeuDireito:os_list')
     else:
         form = PropostaForm()
-        ordem = OrdemServico.objects.get(pk=pk)
-        propostas = Proposta.objects.filter(ordem_servico_id=pk)
+        ordem = OrdemServico.objects.get(pk=ordem_servico_id)
+        propostas = Proposta.objects.filter(ordem_servico_id=ordem_servico_id)
         return render(request, 'fazer_proposta.html', {'form': form, 'ordem': ordem, 'propostas': propostas})
+
+
+def proposta_edit(request, pk, ordem_servico_id):
+    proposta = get_object_or_404(Proposta, pk=pk)
+    if request.method == 'POST':
+        form = PropostaForm(request.POST, instance=proposta)
+        if form.is_valid():
+            form.save()
+            return redirect('appSeuDireito:get_proposta', ordem_servico_id=ordem_servico_id)
+    else:
+        form = PropostaForm(instance=proposta)
+        ordem = OrdemServico.objects.get(pk=ordem_servico_id)
+        return render(request, 'proposta_edit.html', {'form': form, 'ordem': ordem})
 
 
 def listar_propostas(request):

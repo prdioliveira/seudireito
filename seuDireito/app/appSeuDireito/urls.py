@@ -9,6 +9,7 @@ urlpatterns = [
     url(r'^empresa/$', views.empresa_cadastro, name='get_empresa'),
     url(r'^empresa/(?P<pk>[0-9]+)/editar/$', views.empresa_edit, name='empresa_editar'),
     url(r'^ordem-servico/$', views.ordem_servico_cadastro, name='get_os'),
+    url(r'^ordem-servico/(?P<pk>[0-9]+)/editar/$', views.ordem_servico_edit, name='ordem_servico_editar'),
     url(r'^ordem-servico/ver/$', views.os_list, name='os_list'),
     url(r'^ordem-servico/(?P<pk>[0-9]+)/proposta/$', views.fazer_proposta_ordem_servico, name='get_proposta'),
     url(r'^ordem-servico/delegar-ordem-servico/$', views.listar_propostas, name='listar_propostas'),

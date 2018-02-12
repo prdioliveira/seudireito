@@ -72,6 +72,18 @@ def ordem_servico_cadastro(request):
         return render(request, 'cad_os.html', {'form': form, 'ordem_servico': ordem_servico})
 
 
+def ordem_servico_edit(request, pk):
+    ordem_servico = get_object_or_404(OrdemServico, pk=pk)
+    if request.method == 'POST':
+        form = OrdemServicoForm(request.POST, instance=ordem_servico)
+        if form.is_valid():
+            form.save()
+            return redirect('appSeuDireito:get_os')
+    else:
+        form = OrdemServicoForm(instance=ordem_servico)
+        return render(request, 'ordem_servico_edit.html', {'form': form})
+
+
 def os_list(request):
     ordem_servico = OrdemServico.objects.filter(status_id=1)
     return render(request, 'os_list.html', {'ordem_servico': ordem_servico})

@@ -34,6 +34,12 @@ def advogado_edit(request, pk):
         return render(request, 'advogado_edit.html', {'form': form})
 
 
+def advogado_delete(request, pk):
+    advogado = Advogado.objects.get(pk=pk)
+    advogado.delete()
+    return redirect('appSeuDireito:get_advogado')
+
+
 def empresa_cadastro(request):
     if request.method == 'POST':
         form = EmpresaForm(request.POST)

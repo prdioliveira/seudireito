@@ -6,6 +6,7 @@ app_name = 'appSeuDireito'
 urlpatterns = [
     url(r'^advogado/$', views.advogado_cadastro, name='get_advogado'),
     url(r'^advogado/(?P<pk>[0-9]+)/editar/$', views.advogado_edit, name='advogado_editar'),
+    url(r'^advogado/(?P<pk>[0-9]+)/deletar/$', views.advogado_delete, name='advogado_deletar'),
     url(r'^empresa/$', views.empresa_cadastro, name='get_empresa'),
     url(r'^empresa/(?P<pk>[0-9]+)/editar/$', views.empresa_edit, name='empresa_editar'),
     url(r'^ordem-servico/$', views.ordem_servico_cadastro, name='get_os'),

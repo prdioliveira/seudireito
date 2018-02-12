@@ -1,6 +1,6 @@
 from django import forms
-from django.utils.translation import gettext_lazy as _
 from .models import Advogado, Empresa, OrdemServico
+from .models import Proposta
 
 
 class AdvogadoForm(forms.ModelForm):
@@ -20,4 +20,12 @@ class OrdemServicoForm(forms.ModelForm):
         model = OrdemServico
         fields = ['empresa', 'titulo', 'descricao', 'status']
 
-        exclude = ['status',]
+        exclude = ['status']
+
+
+class PropostaForm(forms.ModelForm):
+    class Meta:
+        model = Proposta
+        fields = ['ordem_servico', 'advogado', 'valor_proposta']
+
+        exclude = ['ordem_servico']

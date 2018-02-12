@@ -25,6 +25,7 @@ class OrdemServicoForm(forms.ModelForm):
 
 class PropostaForm(forms.ModelForm):
     class Meta:
+        valor_proposta = forms.DecimalField(max_digits=8, decimal_places=2, localize=True)
         model = Proposta
         fields = ['ordem_servico', 'advogado', 'valor_proposta']
 

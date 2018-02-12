@@ -51,45 +51,4 @@
                     <!-- End Form Elements -->
                 </div>
             </div>
-
-            <!-- Data Table -->
-            <hr />
-
-            <!-- Advanced Tables -->
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    Ordens de Serviço - Proposta
-                </div>
-
-                <div class="panel-body">
-                    <div class="table-responsive">
-                        <table class="table table-striped table-bordered table-hover" id="dataTables-example">
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Empresa</th>
-                                    <th>Ordem de Servico</th>
-                                    <th>Valor</th>
-                                    <th>Editar</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {% for prop in propostas %}
-                                    <tr class="odd gradeX">
-                                        <td>{{ prop.id }}</td>
-                                        <td>{{ prop.advogado }}</td>
-                                        <td>{{ prop.ordem_servico }}</td>
-                                        <td>R$ {{ prop.valor_proposta }}</td>
-                                        <td class="center"><a class="btn btn-default" href="{% url 'appSeuDireito:proposta_editar' ordem_servico_id=prop.ordem_servico.id pk=prop.pk %}"><span class="glyphicon glyphicon-pencil"></span></a></td>
-                                    </tr>
-                                {% endfor %}
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-            <!--End Advanced Tables -->
-        </div>
-    </div>
-
 {% endblock %}

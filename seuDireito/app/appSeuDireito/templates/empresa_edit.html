@@ -13,7 +13,7 @@
                     <!-- Form Elements -->
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Cadastro de Empresa
+                            Edição do Cadastro de Empresa
                         </div>
 
                         <div class="panel-body">
@@ -31,6 +31,7 @@
                                             {{ form.ramo_atuacao|addcss:"form-control"}}
                                         </div>
 
+                                        <input type="button" class="btn btn-info" value="Voltar" onClick="history.go(-1)">
                                         <button type="submit" class="btn btn-primary">Gravar</button>
                                     </form>
                                 </div>
@@ -40,42 +41,6 @@
                     <!-- End Form Elements -->
                 </div>
             </div>
-
-            <!-- Data Table -->
-            <hr />
-
-            <!-- Advanced Tables -->
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    Empresas
-                </div>
-
-                <div class="panel-body">
-                    <div class="table-responsive">
-                        <table class="table table-striped table-bordered table-hover" id="dataTables-example">
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Nome</th>
-                                    <th>Ramo de Atuação</th>
-                                    <th>Editar</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {% for emp in empresas %}
-                                    <tr class="odd gradeX">
-                                        <td>{{ emp.id }}</td>
-                                        <td>{{ emp.nome_empresa }}</td>
-                                        <td>{{ emp.ramo_atuacao }}</td>
-                                        <td class="center"><a class="btn btn-default" href="{% url 'appSeuDireito:empresa_editar' pk=emp.pk %}"><span class="glyphicon glyphicon-pencil"></span></a></td>
-                                    </tr>
-                                {% endfor %}
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-            <!--End Advanced Tables -->
         </div>
     </div>
 

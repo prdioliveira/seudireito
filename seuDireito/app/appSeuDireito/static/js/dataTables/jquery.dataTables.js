@@ -10604,8 +10604,8 @@
 			 *    } );
 			 */
 			"sInfo": "Exibindo _START_ a _END_ de _TOTAL_ registros",
-	
-	
+
+
 			/**
 			 * Display information string for when the table is empty. Typically the
 			 * format of this string should match `info`.
@@ -10625,8 +10625,8 @@
 			 *    } );
 			 */
 			"sInfoEmpty": "Exibindo 0 to 0 de 0 entradas",
-	
-	
+
+
 			/**
 			 * When a user filters the information in a table, this string is appended
 			 * to the information (`info`) to give an idea of how strong the filtering
@@ -10647,8 +10647,8 @@
 			 *    } );
 			 */
 			"sInfoFiltered": "(Total de _MAX_ registros)",
-	
-	
+
+
 			/**
 			 * If can be useful to append extra information to the info string at times,
 			 * and this variable does exactly that. This information will be appended to
@@ -10670,8 +10670,8 @@
 			 *    } );
 			 */
 			"sInfoPostFix": "",
-	
-	
+
+
 			/**
 			 * DataTables has a build in number formatter (`formatNumber`) which is used
 			 * to format large numbers that are used in the table information. By
@@ -10693,8 +10693,8 @@
 			 *    } );
 			 */
 			"sInfoThousands": ",",
-	
-	
+
+
 			/**
 			 * Detail the action that will be taken when the drop down menu for the
 			 * pagination length option is changed. The '_MENU_' variable is replaced
@@ -10734,8 +10734,8 @@
 			 *    } );
 			 */
 			"sLengthMenu": "Show _MENU_ entries",
-	
-	
+
+
 			/**
 			 * When using Ajax sourced data and during the first draw when DataTables is
 			 * gathering the data, this message is shown in an empty row in the table to
@@ -10758,8 +10758,8 @@
 			 *    } );
 			 */
 			"sLoadingRecords": "Loading...",
-	
-	
+
+
 			/**
 			 * Text which is displayed when the table is processing a user action
 			 * (usually a sort command or similar).
@@ -10779,8 +10779,8 @@
 			 *    } );
 			 */
 			"sProcessing": "Processing...",
-	
-	
+
+
 			/**
 			 * Details the actions that will be taken when the user types into the
 			 * filtering input text box. The variable "_INPUT_", if used in the string,
@@ -10814,8 +10814,8 @@
 			 *    } );
 			 */
 			"sSearch": "Search:",
-	
-	
+
+
 			/**
 			 * All of the language information can be stored in a file on the
 			 * server-side, which DataTables will look up if this parameter is passed.
@@ -10839,8 +10839,8 @@
 			 *    } );
 			 */
 			"sUrl": "",
-	
-	
+
+
 			/**
 			 * Text shown inside the table records when the is no information to be
 			 * displayed after filtering. `emptyTable` is shown when there is simply no

@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% load app_extras %}
+
+{% block title %}
+    Finalizar Ordem de Serviço
+{% endblock %}
+{% block content %}
+    <div id="page-wrapper" >
+        <div id="page-inner">
+            <!-- /. ROW  -->
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- Form Elements -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Finalizar Ordem de Serviço
+                        </div>
+
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <form role="form" method="post">
+                                        {% csrf_token %}
+                                        <div class="form-group">
+                                            <h3>{{ proposta.ordem_servico }}</h3>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Descrição: </label>
+                                            {{ proposta.ordem_servico.descricao }}
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Status: </label>
+                                            {{ proposta.ordem_servico.status }}
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Advogado: </label>
+                                            {{ proposta.advogado}}
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Valor da Proposta R$: </label>
+                                            {{ proposta.valor_proposta}}
+                                        </div>
+
+                                        <div class="form-group">
+                                            <p class="text-danger">
+                                                Atenção: Fianlizar Ordem de Serviço significa que o advogado concluiu o serviço
+                                                solicitado.
+                                            </p>
+                                        </div>
+
+                                        <input type="button" class="btn btn-info" value="Voltar" onClick="history.go(-1)">
+                                        <button type="submit" class="btn btn-primary">Finalizar</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Form Elements -->
+                </div>
+            </div>
+            <!-- Data Table -->
+        </div>
+    </div>
+
+{% endblock %}

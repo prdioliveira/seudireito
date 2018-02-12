@@ -46,6 +46,18 @@ def empresa_cadastro(request):
         return render(request, 'cad_empresa.html', {'form': form, 'empresas': empresas})
 
 
+def empresa_edit(request, pk):
+    empresa = get_object_or_404(Empresa, pk=pk)
+    if request.method == 'POST':
+        form = EmpresaForm(request.POST, instance=empresa)
+        if form.is_valid():
+            form.save()
+            return redirect('appSeuDireito:get_empresa')
+    else:
+        form = EmpresaForm(instance=empresa)
+        return render(request, 'empresa_edit.html', {'form': form})
+
+
 def ordem_servico_cadastro(request):
     if request.method == 'POST':
         form = OrdemServicoForm(request.POST)

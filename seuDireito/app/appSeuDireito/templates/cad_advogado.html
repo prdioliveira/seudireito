@@ -74,7 +74,7 @@
                                         <td>{{ adv.nome_advogado }}</td>
                                         <td>{{ adv.email }}</td>
                                         <td>{{ adv.cpf }}</td>
-                                        <td class="center"><a class="btn btn-default" href="{% url 'appSeuDireito:advogado_edit' pk=adv.pk %}"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                                        <td class="center"><a class="btn btn-default" href="{% url 'appSeuDireito:advogado_editar' pk=adv.pk %}"><span class="glyphicon glyphicon-pencil"></span></a></td>
                                     </tr>
                                 {% endfor %}
                             </tbody>

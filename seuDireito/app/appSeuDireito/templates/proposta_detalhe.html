@@ -13,7 +13,7 @@
                     <!-- Form Elements -->
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Propostas para Ordem de Serviço
+                            <h4>Porpostas para: {{ proposta.0.ordem_servico }}</h4>
                         </div>
 
                         <div class="panel-body">
@@ -21,32 +21,42 @@
                                 <div class="col-md-12">
                                     <form role="form" method="post">
                                         {% csrf_token %}
-                                        <div class="form-group">
-                                            <h2>{{ proposta.ordem_servico }}</h2>
-                                        </div>
+                                        {% for prop in proposta %}
+                                            <div class="form-group">
+                                                <label>Número da OS: </label>
+                                                {{ prop.ordem_servico.id }}
+                                            </div>
 
-                                        <div class="form-group">
-                                            <label>Descrição: </label>
-                                            {{ proposta.ordem_servico.descricao }}
-                                        </div>
+                                            <div class="form-group">
+                                                <label>Descrição: </label>
+                                                {{ prop.ordem_servico.descricao }}
+                                            </div>
 
-                                        <div class="form-group">
-                                            <label>Advogado: </label>
-                                            {{ proposta.advogado}}
-                                        </div>
+                                            <div class="form-group">
+                                                <label>Advogado: </label>
+                                                {{ prop.advogado}}
+                                            </div>
 
-                                        <div class="form-group">
-                                            <label>Valor da Proposta: </label>
-                                            {{ proposta.valor_proposta}}
-                                        </div>
+                                            <div class="form-group">
+                                                <label>Valor da Proposta R$: </label>
+                                                {{ prop.valor_proposta}}
+                                            </div>
 
-                                        <button type="submit" class="btn btn-primary">Delegar</button>
+                                            <button type="submit" class="btn btn-primary">Delegar</button>
+                                            <hr/>
+                                        {% endfor %}
+
+
+
+
                                     </form>
+
                                 </div>
                             </div>
                         </div>
                     </div>
                     <!-- End Form Elements -->
+                <input type="button" class="btn btn-info" value="Voltar" onClick="history.go(-1)">
                 </div>
             </div>
             <!-- Data Table -->

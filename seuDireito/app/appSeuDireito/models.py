@@ -50,7 +50,7 @@ class OrdemServico(models.Model):
 class Proposta(models.Model):
     ordem_servico = models.ForeignKey(OrdemServico)
     advogado = models.ForeignKey(Advogado)
-    valor_proposta = models.CharField(max_length=10)
+    valor_proposta = models.DecimalField(max_digits=8, decimal_places=2)
     aceita = models.NullBooleanField(null=True)
 
     def __str__(self):

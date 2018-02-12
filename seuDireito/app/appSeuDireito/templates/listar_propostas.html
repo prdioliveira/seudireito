@@ -14,46 +14,40 @@
                         <div class="panel-heading">
                             Propostas Existentes
                         </div>
-
-                        <div class="panel-body">
-                            <div class="table-responsive">
-                                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
-                                    <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>Ordem de Servico</th>
-                                        <th>Advogado</th>
-                                        <th>Valor</th>
-                                        <th>Ação</th>
+                        <div class="table-responsive">
+                            <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                <thead>
+                                <tr>
+                                    <th>Num. da OS</th>
+                                    <th>Ordem de Servico</th>
+                                    <th>Status</th>
+                                    <th>Ação</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for proposta in propostas_criadas %}
+                                    <tr class="odd gradeX">
+                                        <td>{{ proposta.ordem_servico.id }}</td>
+                                        <td>{{ proposta.ordem_servico }}</td>
+                                        <td>{{ proposta.ordem_servico.status }}</td>
+                                        <td><a href="{% url 'appSeuDireito:delegar_proposta' pk=proposta.pk ordem_servico_id=proposta.ordem_servico.id %}">Delegar</a></td>
                                     </tr>
-                                    </thead>
-                                    <tbody>
-                                    {% for proposta in propostas_criadas %}
-                                        <tr class="odd gradeX">
-                                            <td>{{ proposta.id }}</td>
-                                            <td>{{ proposta.ordem_servico }}</td>
-                                            <td>{{ proposta.advogado }}</td>
-                                            <td>{{ proposta.valor_proposta }}</td>
-                                            <td><a href="{% url 'appSeuDireito:delegar_proposta' pk=proposta.pk%}">Delegar</a></td>
-                                        </tr>
-                                    {% endfor %}
-                                    </tbody>
-                                </table>
-                            </div>
+                                {% endfor %}
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                     <!--End Advanced Tables -->
-                <div class="panel panel-default">
+                    <div class="panel panel-default">
                         <div class="panel-heading">
-                            Propostas Existentes
+                            Propostas Delegadas
                         </div>
-
                         <div class="panel-body">
                             <div class="table-responsive">
-                                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                <table class="table table-striped table-bordered table-hover align" id="dataTables-example">
                                     <thead>
                                     <tr>
-                                        <th>#</th>
+                                        <th>Num. da OS</th>
                                         <th>Ordem de Servico</th>
                                         <th>Advogado</th>
                                         <th>Valor</th>
@@ -64,12 +58,12 @@
                                     <tbody>
                                     {% for proposta in propostas_delegadas %}
                                         <tr class="odd gradeX">
-                                            <td>{{ proposta.id }}</td>
+                                            <td>{{ proposta.ordem_servico.id }}</td>
                                             <td>{{ proposta.ordem_servico }}</td>
                                             <td>{{ proposta.advogado }}</td>
-                                            <td>{{ proposta.valor_proposta }}</td>
+                                            <td>R$ {{ proposta.valor_proposta }}</td>
                                             <td>{{ proposta.ordem_servico.status }}</td>
-                                            <td><a href="#">Fazer Proposta</a></td>
+                                            <td><a href="{% url 'appSeuDireito:finalizar_os' pk=proposta.pk %}">Concluir OS</a></td>
                                         </tr>
                                     {% endfor %}
                                     </tbody>

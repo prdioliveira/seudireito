@@ -15,11 +15,23 @@ def advogado_cadastro(request):
         form = AdvogadoForm(request.POST)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect('/advogado/')
+            return HttpResponseRedirect('appSeuDireito:get_advogado')
     else:
         form = AdvogadoForm()
         advogados = Advogado.objects.all()
         return render(request, 'cad_advogado.html', {'form': form, 'advogados': advogados})
+
+
+def advogado_edit(request, pk):
+    advogado = get_object_or_404(Advogado, pk=pk)
+    if request.method == 'POST':
+        form = AdvogadoForm(request.POST, instance=advogado)
+        if form.is_valid():
+            form.save()
+        return redirect('appSeuDireito:get_advogado')
+    else:
+        form = AdvogadoForm(instance=advogado)
+        return render(request, 'advogado_edit.html', {'form': form})
 
 
 def empresa_cadastro(request):

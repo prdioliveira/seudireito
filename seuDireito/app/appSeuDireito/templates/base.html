@@ -35,26 +35,30 @@
                 <div class="sidebar-collapse">
                     <ul class="nav" id="main-menu">
                         <li>
-                            <a href="#"><i class="fa fa-sitemap fa-3x"></i> Cadastro <span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-sitemap fa-3x"></i> Advogado <span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="/advogado/">Advogado</a>
+                                    <a href="{% url 'appSeuDireito:get_advogado' %}">Cadastrar Advogado</a>
                                 </li>
+
                                 <li>
-                                    <a href="/empresa/">Empresa</a>
+                                    <a href="{% url 'appSeuDireito:os_list' %}">Fazer Proposta</a>
                                 </li>
+
                             </ul>
                         </li>
 
                         <li>
-                            <a href="#"><i class="fa fa-sitemap fa-3x"></i> Ordem De Serviço <span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-sitemap fa-3x"></i> Empresa <span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="/ordem-servico/">Cadastrar OS</a>
+                                    <a href="{% url 'appSeuDireito:get_empresa' %}">Cadastrar Empresa</a>
                                 </li>
+
                                 <li>
-                                    <a href="{% url 'appSeuDireito:os_list' %}">Propostas</a>
+                                    <a href="{% url 'appSeuDireito:get_os' %}">Cadastrar OS</a>
                                 </li>
+
                                 <li>
                                     <a href="{% url 'appSeuDireito:listar_propostas' %}">Delegar OS</a>
                                 </li>

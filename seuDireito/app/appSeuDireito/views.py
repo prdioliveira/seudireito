@@ -13,14 +13,16 @@ def index(request):
 
 @login_required()
 def advogado_cadastro(request):
+    advogados = Advogado.objects.all()
     if request.method == 'POST':
         form = AdvogadoForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('appSeuDireito:get_advogado')
+        else:
+            return render(request, 'advogado/cad_advogado.html', {'form': form, 'advogados': advogados})
     else:
         form = AdvogadoForm()
-        advogados = Advogado.objects.all()
         return render(request, 'advogado/cad_advogado.html', {'form': form, 'advogados': advogados})
 
 

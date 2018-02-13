@@ -164,3 +164,8 @@ def concluir_ordem_servico(request, pk):
     # Retorna o contexto para a página
     proposta = Proposta.objects.get(pk=pk)
     return render(request, 'finalizar_ordem_servico.html', {'proposta': proposta})
+
+
+def visualizar_ordem_seervico(request):
+    ordens_servico = OrdemServico.objects.all()
+    return render(request, 'visualizar_ordem_servico.html', {'ordens_servico': ordens_servico})

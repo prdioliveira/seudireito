@@ -65,6 +65,16 @@
                             </ul>
                         </li>
 
+                        <li>
+                            <a href="#"><i class="fa fa-sitemap fa-3x"></i> Relatórios <span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{% url 'appSeuDireito:visualizar_ordem_seervico' %}">Visualizar OS</a>
+                                </li>
+                            </ul>
+                        </li>
+
+
                     </ul>
                 </div>
             </nav>
@@ -72,6 +82,7 @@
     {% block content %}
 
     {% endblock %}
+
     <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
     <!-- JQUERY SCRIPTS -->
     <script src="{% static 'js/jquery-1.10.2.js' %}"></script>

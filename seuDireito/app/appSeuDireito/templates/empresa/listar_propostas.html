@@ -21,7 +21,9 @@
                                     <tr>
                                         <th>Num. da OS</th>
                                         <th>Ordem de Servico</th>
+                                        <th>Descrição</th>
                                         <th>Status</th>
+                                        <th>Advogado</th>
                                         <th>Ação</th>
                                     </tr>
                                     </thead>
@@ -30,8 +32,10 @@
                                         <tr class="odd gradeX">
                                             <td>{{ proposta.ordem_servico.id }}</td>
                                             <td>{{ proposta.ordem_servico }}</td>
+                                            <td>{{ proposta.ordem_servico.descricao }}</td>
                                             <td>{{ proposta.ordem_servico.status }}</td>
-                                            <td><a href="{% url 'appSeuDireito:delegar_proposta' pk=proposta.pk ordem_servico_id=proposta.ordem_servico.id %}">Delegar</a></td>
+                                            <td>{{ proposta.advogado }}</td>
+                                            <td><a href="{% url 'appSeuDireito:delegar_proposta' pk=proposta.pk %}">Delegar</a></td>
                                         </tr>
                                     {% endfor %}
                                     </tbody>

@@ -12,6 +12,11 @@
 /*==============================================
     GENERAL  STYLES    
     =============================================*/
+.custom-login {
+    color: #ffffff;
+    text-align: left;
+}
+
 body {
     font-family: 'Open Sans', sans-serif;
 }

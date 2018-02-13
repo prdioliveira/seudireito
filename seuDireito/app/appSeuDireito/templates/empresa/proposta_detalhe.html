@@ -13,7 +13,7 @@
                     <!-- Form Elements -->
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h4>Porpostas para: {{ proposta.0.ordem_servico }}</h4>
+                            <h4>Porpostas para: {{ proposta.ordem_servico }}</h4>
                         </div>
 
                         <div class="panel-body">
@@ -21,30 +21,28 @@
                                 <div class="col-md-12">
                                     <form role="form" method="post">
                                         {% csrf_token %}
-                                        {% for prop in proposta %}
                                             <div class="form-group">
                                                 <label>Número da OS: </label>
-                                                {{ prop.ordem_servico.id }}
+                                                {{ proposta.ordem_servico.id }}
                                             </div>
 
                                             <div class="form-group">
                                                 <label>Descrição: </label>
-                                                {{ prop.ordem_servico.descricao }}
+                                                {{ proposta.ordem_servico.descricao }}
                                             </div>
 
                                             <div class="form-group">
                                                 <label>Advogado: </label>
-                                                {{ prop.advogado}}
+                                                {{ proposta.advogado}}
                                             </div>
 
                                             <div class="form-group">
                                                 <label>Valor da Proposta R$: </label>
-                                                {{ prop.valor_proposta}}
+                                                {{ proposta.valor_proposta}}
                                             </div>
 
                                             <button type="submit" class="btn btn-primary">Delegar</button>
                                             <hr/>
-                                        {% endfor %}
                                     </form>
 
                                 </div>

@@ -12,7 +12,7 @@ class AdvogadoForm(forms.ModelForm):
         cpf = self.cleaned_data['cpf']
         obj_adv = Advogado.objects.filter(cpf=cpf).count()
         if obj_adv > 0:
-            raise forms.ValidationError(u'CPF já cadastrado!')
+            raise forms.ValidationError('CPF já cadastrado!')
         return self.cleaned_data['cpf']
 
 

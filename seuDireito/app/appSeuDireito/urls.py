@@ -17,7 +17,7 @@ urlpatterns = [
     url(r'^ordem-servico/(?P<ordem_servico_id>[0-9]+)/proposta/$', views.fazer_proposta_ordem_servico, name='get_proposta'),
     url(r'^ordem-servico/(?P<ordem_servico_id>[0-9]+)/proposta/(?P<pk>[0-9]+)/editar/$', views.proposta_edit, name='proposta_editar'),
     url(r'^ordem-servico/delegar-ordem-servico/$', views.listar_propostas, name='listar_propostas'),
-    url(r'^ordem-servico/delegar-ordem-servico/(?P<pk>[0-9]+)/proposta/(?P<ordem_servico_id>[0-9]+)/$', views.delegar_proposta, name='delegar_proposta'),
+    url(r'^ordem-servico/delegar-ordem-servico/(?P<pk>[0-9]+)/proposta/$', views.delegar_proposta, name='delegar_proposta'),
     url(r'^ordem-servico/finalizar-ordem-servico/(?P<pk>[0-9]+)/proposta/$', views.concluir_ordem_servico, name='finalizar_os'),
     url(r'^$', views.index, name='index'),
 ]

@@ -21,6 +21,7 @@
                                 <div class="col-md-12">
                                     <form role="form" method="post">
                                         {% csrf_token %}
+                                    {% if propostas %}
                                         {% for prop in propostas %}
                                             <div class="form-group">
                                                 <label>Número da OS: </label>
@@ -51,6 +52,9 @@
                                             {% if prop.aceita %}
                                                 <label>Status da Proposta: </label>
                                                 Proposta Aceita
+                                            {% elif prop.aceita == false %}
+                                                <label>Status da Proposta: </label>
+                                                Proposta não delegada
                                             {% else %}
                                                 <label>Status da Proposta: </label>
                                                 Proposta Recusada
@@ -58,6 +62,11 @@
                                             </div>
                                             <hr/>
                                         {% endfor %}
+                                    {% else %}
+                                        <div class="form-group">
+                                            Não há propostas criadas para a OS
+                                        </div>
+                                    {% endif %}
                                     </form>
 
                                 </div>

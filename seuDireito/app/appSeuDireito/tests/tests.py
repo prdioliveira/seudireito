@@ -1,7 +1,7 @@
 from django.test import TestCase
-from .models import Empresa, Advogado, OrdemServico
+from seuDireito.app.appSeuDireito.models import Empresa, Advogado, OrdemServico
 from django.core.management import call_command
-from .models import Status
+from seuDireito.app.appSeuDireito.models import Status
 
 
 class ModelTest(TestCase):
@@ -33,4 +33,3 @@ class ModelTest(TestCase):
 
         for st in status:
             self.assertIn(st, str(Status.objects.all()))
-

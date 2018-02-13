@@ -15,7 +15,6 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
@@ -92,6 +91,8 @@ AUTH_PASSWORD_VALIDATORS = [
 PROJECT_ROOT = os.path.dirname(os.path.realpath(__file__))
 FIXTURE_DIRS = (os.path.join(PROJECT_ROOT, 'fixtures'),)
 
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/accounts/login/'
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 

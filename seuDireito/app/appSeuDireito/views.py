@@ -1,15 +1,17 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404, render_to_response
 from django.http import HttpResponseRedirect
 from .forms import AdvogadoForm, EmpresaForm
 from .models import Advogado, Empresa, Status
 from .models import OrdemServico, Proposta
 from .forms import OrdemServicoForm, PropostaForm
+from django.contrib.auth.decorators import login_required
 
 
 def index(request):
     return render(request, 'index.html')
 
 
+@login_required()
 def advogado_cadastro(request):
     if request.method == 'POST':
         form = AdvogadoForm(request.POST)
@@ -22,6 +24,7 @@ def advogado_cadastro(request):
         return render(request, 'advogado/cad_advogado.html', {'form': form, 'advogados': advogados})
 
 
+@login_required()
 def advogado_edit(request, pk):
     advogado = get_object_or_404(Advogado, pk=pk)
     if request.method == 'POST':
@@ -34,12 +37,14 @@ def advogado_edit(request, pk):
         return render(request, 'advogado/advogado_edit.html', {'form': form})
 
 
+@login_required()
 def advogado_delete(request, pk):
     advogado = Advogado.objects.get(pk=pk)
     advogado.delete()
     return redirect('appSeuDireito:get_advogado')
 
 
+@login_required()
 def empresa_cadastro(request):
     if request.method == 'POST':
         form = EmpresaForm(request.POST)
@@ -52,6 +57,7 @@ def empresa_cadastro(request):
         return render(request, 'empresa/cad_empresa.html', {'form': form, 'empresas': empresas})
 
 
+@login_required()
 def empresa_edit(request, pk):
     empresa = get_object_or_404(Empresa, pk=pk)
     if request.method == 'POST':
@@ -64,6 +70,7 @@ def empresa_edit(request, pk):
         return render(request, 'empresa/empresa_edit.html', {'form': form})
 
 
+@login_required()
 def ordem_servico_cadastro(request):
     if request.method == 'POST':
         form = OrdemServicoForm(request.POST)
@@ -78,6 +85,7 @@ def ordem_servico_cadastro(request):
         return render(request, 'empresa/cad_os.html', {'form': form, 'ordem_servico': ordem_servico})
 
 
+@login_required()
 def ordem_servico_edit(request, pk):
     ordem_servico = get_object_or_404(OrdemServico, pk=pk)
     if request.method == 'POST':
@@ -90,11 +98,13 @@ def ordem_servico_edit(request, pk):
         return render(request, 'empresa/ordem_servico_edit.html', {'form': form})
 
 
+@login_required()
 def os_list(request):
     ordem_servico = OrdemServico.objects.filter(status_id=1)
     return render(request, 'advogado/os_list.html', {'ordem_servico': ordem_servico})
 
 
+@login_required()
 def fazer_proposta_ordem_servico(request, ordem_servico_id):
     if request.method == 'POST':
         form = PropostaForm(request.POST)
@@ -110,6 +120,7 @@ def fazer_proposta_ordem_servico(request, ordem_servico_id):
         return render(request, 'advogado/fazer_proposta.html', {'form': form, 'ordem': ordem, 'propostas': propostas})
 
 
+@login_required()
 def proposta_edit(request, pk, ordem_servico_id):
     proposta = get_object_or_404(Proposta, pk=pk)
     if request.method == 'POST':
@@ -123,6 +134,7 @@ def proposta_edit(request, pk, ordem_servico_id):
         return render(request, 'advogado/proposta_edit.html', {'form': form, 'ordem': ordem})
 
 
+@login_required()
 def listar_propostas(request):
     # Retorna todas as OS com Status Criada
     os_ids = OrdemServico.objects.filter(status_id=1).values_list('id')
@@ -135,6 +147,7 @@ def listar_propostas(request):
                                                      'propostas_delegadas': propostas_delegadas})
 
 
+@login_required()
 def delegar_proposta(request, pk, ordem_servico_id):
     proposta = Proposta.objects.filter(ordem_servico_id=ordem_servico_id)
     if request.method == 'POST':
@@ -154,6 +167,7 @@ def delegar_proposta(request, pk, ordem_servico_id):
     return render(request, 'empresa/proposta_detalhe.html', {'proposta': proposta})
 
 
+@login_required()
 def concluir_ordem_servico(request, pk):
     if request.method == 'POST':
         # Pega o id da ordem de servico
@@ -166,6 +180,7 @@ def concluir_ordem_servico(request, pk):
     return render(request, 'empresa/finalizar_ordem_servico.html', {'proposta': proposta})
 
 
+@login_required()
 def visualizar_ordem_seervico(request):
     ordens_servico = OrdemServico.objects.all()
     return render(request, 'empresa/visualizar_ordem_servico.html', {'ordens_servico': ordens_servico})

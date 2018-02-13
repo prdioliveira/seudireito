@@ -22,4 +22,5 @@ app_name = 'appSeuDireito'
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^', include('seuDireito.app.appSeuDireito.urls', namespace='app-seudireito')),
+    url(r'^accounts/', include('django.contrib.auth.urls'))
 ]

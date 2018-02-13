@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load app_extras %}
+
+{% block title %}
+    Visualizar Ordens de Servico
+{% endblock %}
+{% block content %}
+    <div id="page-wrapper" >
+        <div id="page-inner">
+            <!-- /. ROW  -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Ordens de Serviço Existentes
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <form role="form" method="post">
+                                        {% csrf_token %}
+                                        {% for ordem in ordens_servico %}
+                                            <div class="form-group">
+                                                <h3>{{ ordem.titulo }}</h3>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Número da OS: </label>
+                                                {{ ordem.id }}
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Descrição: </label>
+                                                {{ ordem.descricao }}
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Status: </label>
+                                                {{ ordem.status}}
+                                            </div>
+                                            <hr/>
+                                        {% endfor %}
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--End Advanced Tables -->
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

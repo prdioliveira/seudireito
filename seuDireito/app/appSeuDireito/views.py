@@ -13,14 +13,16 @@ def index(request):
 
 @login_required()
 def advogado_cadastro(request):
+    advogados = Advogado.objects.all()
     if request.method == 'POST':
         form = AdvogadoForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('appSeuDireito:get_advogado')
+        else:
+            return render(request, 'advogado/cad_advogado.html', {'form': form, 'advogados': advogados})
     else:
         form = AdvogadoForm()
-        advogados = Advogado.objects.all()
         return render(request, 'advogado/cad_advogado.html', {'form': form, 'advogados': advogados})
 
 
@@ -71,6 +73,13 @@ def empresa_edit(request, pk):
 
 
 @login_required()
+def empresa_delete(request, pk):
+    empresa = Empresa.objects.get(pk=pk)
+    empresa.delete()
+    return redirect('appSeuDireito:get_empresa')
+
+
+@login_required()
 def ordem_servico_cadastro(request):
     if request.method == 'POST':
         form = OrdemServicoForm(request.POST)
@@ -96,6 +105,13 @@ def ordem_servico_edit(request, pk):
     else:
         form = OrdemServicoForm(instance=ordem_servico)
         return render(request, 'empresa/ordem_servico_edit.html', {'form': form})
+
+
+@login_required()
+def ordem_servico_delete(request, pk):
+    ordem_servico = OrdemServico.objects.get(pk=pk)
+    ordem_servico.delete()
+    return redirect('appSeuDireito:get_os')
 
 
 @login_required()
@@ -135,21 +151,28 @@ def proposta_edit(request, pk, ordem_servico_id):
 
 
 @login_required()
+def proposta_delete(request, pk, ordem_servico_id):
+    proposta = Proposta.objects.get(pk=pk)
+    proposta.delete()
+    return redirect('appSeuDireito:get_proposta', ordem_servico_id=ordem_servico_id)
+
+
+@login_required()
 def listar_propostas(request):
     # Retorna todas as OS com Status Criada
     os_ids = OrdemServico.objects.filter(status_id=1).values_list('id')
-    propostas_criadas = Proposta.objects.filter(ordem_servico_id__in=os_ids, aceita=None).distinct('ordem_servico_id')
+    propostas_criadas = Proposta.objects.filter(ordem_servico_id__in=os_ids, aceita=None)
 
     # Retorna todas as OS com Status Delegada
     os_ids = OrdemServico.objects.filter(status_id=2).values_list('id')
     propostas_delegadas = Proposta.objects.filter(ordem_servico_id__in=os_ids, aceita=True)
     return render(request, 'empresa/listar_propostas.html', {'propostas_criadas': propostas_criadas,
-                                                     'propostas_delegadas': propostas_delegadas})
+                                                             'propostas_delegadas': propostas_delegadas})
 
 
 @login_required()
-def delegar_proposta(request, pk, ordem_servico_id):
-    proposta = Proposta.objects.filter(ordem_servico_id=ordem_servico_id)
+def delegar_proposta(request, pk):
+    proposta = Proposta.objects.get(pk=pk)
     if request.method == 'POST':
         # Retorna os ids das OS's da proposta
         os_ids = Proposta.objects.filter(pk=pk).values_list('ordem_servico_id')
@@ -184,3 +207,9 @@ def concluir_ordem_servico(request, pk):
 def visualizar_ordem_seervico(request):
     ordens_servico = OrdemServico.objects.all()
     return render(request, 'empresa/visualizar_ordem_servico.html', {'ordens_servico': ordens_servico})
+
+
+@login_required()
+def proposta_ordem_servico(request, ordem_servico_id):
+    propostas = Proposta.objects.filter(ordem_servico_id=ordem_servico_id)
+    return render(request, 'empresa/propostas_ordem_servico.html', {'propostas': propostas})

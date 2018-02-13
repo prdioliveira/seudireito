@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% load app_extras %}
+
+{% block title %}
+    Detalhe Ordem de Serviço
+{% endblock %}
+{% block content %}
+    <div id="page-wrapper" >
+        <div id="page-inner">
+            <!-- /. ROW  -->
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- Form Elements -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4>Detalhamento - Ordem de Serviço: {{ propostas.0.ordem_servico }}</h4>
+                        </div>
+
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <form role="form" method="post">
+                                        {% csrf_token %}
+                                    {% if propostas %}
+                                        {% for prop in propostas %}
+                                            <div class="form-group">
+                                                <label>Número da OS: </label>
+                                                {{ prop.ordem_servico.id }}
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Descrição: </label>
+                                                {{ prop.ordem_servico.descricao }}
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Status da Ordem de Serviço: </label>
+                                                {{ prop.ordem_servico.status }}
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Advogado: </label>
+                                                {{ prop.advogado}}
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Valor da Proposta R$: </label>
+                                                {{ prop.valor_proposta}}
+                                            </div>
+
+                                            <div class="form-group">
+                                            {% if prop.aceita %}
+                                                <label>Status da Proposta: </label>
+                                                Proposta Aceita
+                                            {% elif prop.aceita == false %}
+                                                <label>Status da Proposta: </label>
+                                                Proposta não delegada
+                                            {% else %}
+                                                <label>Status da Proposta: </label>
+                                                Proposta Recusada
+                                            {% endif %}
+                                            </div>
+                                            <hr/>
+                                        {% endfor %}
+                                    {% else %}
+                                        <div class="form-group">
+                                            Não há propostas criadas para a OS
+                                        </div>
+                                    {% endif %}
+                                    </form>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Form Elements -->
+                <input type="button" class="btn btn-info" value="Voltar" onClick="history.go(-1)">
+                </div>
+            </div>
+            <!-- Data Table -->
+        </div>
+    </div>
+
+{% endblock %}

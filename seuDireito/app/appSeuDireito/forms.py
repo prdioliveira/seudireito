@@ -8,6 +8,13 @@ class AdvogadoForm(forms.ModelForm):
         model = Advogado
         fields = ['nome_advogado', 'email', 'cpf']
 
+    def clean_cpf(self):
+        cpf = self.cleaned_data['cpf']
+        obj_adv = Advogado.objects.filter(cpf=cpf).count()
+        if obj_adv > 0:
+            raise forms.ValidationError('CPF já cadastrado!')
+        return self.cleaned_data['cpf']
+
 
 class EmpresaForm(forms.ModelForm):
     class Meta:

@@ -67,7 +67,15 @@
                                         <td>{{ emp.id }}</td>
                                         <td>{{ emp.nome_empresa }}</td>
                                         <td>{{ emp.ramo_atuacao }}</td>
-                                        <td class="center"><a class="btn btn-default" href="{% url 'appSeuDireito:empresa_editar' pk=emp.pk %}"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                                        <td class="center">
+                                            <a class="btn btn-default" href="{% url 'appSeuDireito:empresa_editar' pk=emp.pk %}">
+                                                <span class="glyphicon glyphicon-pencil"></span>
+                                            </a>
+
+{#                                            <a class="btn btn-default" href="{% url 'appSeuDireito:empresa_deletar' pk=emp.pk %}">#}
+{#                                                <span class="glyphicon glyphicon-trash"></span>#}
+{#                                            </a>#}
+                                        </td>
                                     </tr>
                                 {% endfor %}
                             </tbody>

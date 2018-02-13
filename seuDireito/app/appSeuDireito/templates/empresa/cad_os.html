@@ -76,7 +76,15 @@
                                         <td>{{ os.titulo }}</td>
                                         <td>{{ os.descricao }}</td>
                                         <td>{{ os.status }}</td>
-                                        <td class="center"><a class="btn btn-default" href="{% url 'appSeuDireito:ordem_servico_editar' pk=os.pk %}"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                                        <td class="center">
+                                            <a class="btn btn-default" href="{% url 'appSeuDireito:ordem_servico_editar' pk=os.pk %}">
+                                                <span class="glyphicon glyphicon-pencil"></span>
+                                            </a>
+
+{#                                            <a class="btn btn-default" href="{% url 'appSeuDireito:ordem_servico_deletar' pk=os.pk %}">#}
+{#                                                <span class="glyphicon glyphicon-trash"></span>#}
+{#                                            </a>#}
+                                        </td>
                                     </tr>
                                 {% endfor %}
                             </tbody>

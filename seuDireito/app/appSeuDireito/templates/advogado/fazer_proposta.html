@@ -80,7 +80,15 @@
                                         <td>{{ prop.advogado }}</td>
                                         <td>{{ prop.ordem_servico }}</td>
                                         <td>R$ {{ prop.valor_proposta }}</td>
-                                        <td class="center"><a class="btn btn-default" href="{% url 'appSeuDireito:proposta_editar' ordem_servico_id=prop.ordem_servico.id pk=prop.pk %}"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                                        <td>
+                                            <a class="btn btn-default" href="{% url 'appSeuDireito:proposta_editar' ordem_servico_id=prop.ordem_servico.id pk=prop.pk %}">
+                                                <span class="glyphicon glyphicon-pencil"></span>
+                                            </a>
+
+{#                                            <a class="btn btn-default" href="{% url 'appSeuDireito:proposta_deletar' ordem_servico_id=prop.ordem_servico.id pk=prop.pk %}">#}
+{#                                                <span class="glyphicon glyphicon-trash"></span>#}
+{#                                            </a>#}
+                                        </td>
                                     </tr>
                                 {% endfor %}
                             </tbody>

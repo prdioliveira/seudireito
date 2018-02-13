@@ -91,6 +91,7 @@ AUTH_PASSWORD_VALIDATORS = [
 PROJECT_ROOT = os.path.dirname(os.path.realpath(__file__))
 FIXTURE_DIRS = (os.path.join(PROJECT_ROOT, 'fixtures'),)
 
+# Para logar na aplicacao, utilizar o superuser
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/accounts/login/'
 # Internationalization

@@ -5,7 +5,6 @@ ENV = 'TEST'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-TEMPLATE_DEBUG = True
 SERVER_PORT = 8000
 
 # Allow all host headers

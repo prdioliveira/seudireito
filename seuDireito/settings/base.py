@@ -89,10 +89,8 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-FIXTURE_DIRS = (
-   '/seuDireito/app/appSeuDireito/fixtures',
-)
-
+PROJECT_ROOT = os.path.dirname(os.path.realpath(__file__))
+FIXTURE_DIRS = (os.path.join(PROJECT_ROOT, 'fixtures'),)
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/

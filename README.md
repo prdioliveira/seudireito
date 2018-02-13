@@ -42,7 +42,7 @@ pip 3 install -r requirements.txt
 
 Esse procedimento irá instalar:
 Django=1.11
-psycopg2=
+psycopg2
 ```
 
 Carregar as fixtures do projeto

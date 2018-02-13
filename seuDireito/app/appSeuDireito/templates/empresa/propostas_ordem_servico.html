@@ -2,7 +2,7 @@
 {% load app_extras %}
 
 {% block title %}
-    Cadastro de Proposta
+    Detalhe Ordem de Serviço
 {% endblock %}
 {% block content %}
     <div id="page-wrapper" >
@@ -13,7 +13,7 @@
                     <!-- Form Elements -->
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h4>Porpostas para: {{ proposta.0.ordem_servico }}</h4>
+                            <h4>Detalhamento - Ordem de Serviço: {{ propostas.0.ordem_servico }}</h4>
                         </div>
 
                         <div class="panel-body">
@@ -21,7 +21,7 @@
                                 <div class="col-md-12">
                                     <form role="form" method="post">
                                         {% csrf_token %}
-                                        {% for prop in proposta %}
+                                        {% for prop in propostas %}
                                             <div class="form-group">
                                                 <label>Número da OS: </label>
                                                 {{ prop.ordem_servico.id }}
@@ -30,6 +30,11 @@
                                             <div class="form-group">
                                                 <label>Descrição: </label>
                                                 {{ prop.ordem_servico.descricao }}
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Status da Ordem de Serviço: </label>
+                                                {{ prop.ordem_servico.status }}
                                             </div>
 
                                             <div class="form-group">
@@ -42,7 +47,15 @@
                                                 {{ prop.valor_proposta}}
                                             </div>
 
-                                            <button type="submit" class="btn btn-primary">Delegar</button>
+                                            <div class="form-group">
+                                            {% if prop.aceita %}
+                                                <label>Status da Proposta: </label>
+                                                Proposta Aceita
+                                            {% else %}
+                                                <label>Status da Proposta: </label>
+                                                Proposta Recusada
+                                            {% endif %}
+                                            </div>
                                             <hr/>
                                         {% endfor %}
                                     </form>

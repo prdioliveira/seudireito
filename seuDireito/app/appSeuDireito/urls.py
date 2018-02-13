@@ -11,6 +11,7 @@ urlpatterns = [
     url(r'^empresa/(?P<pk>[0-9]+)/editar/$', views.empresa_edit, name='empresa_editar'),
     url(r'^ordem-servico/$', views.ordem_servico_cadastro, name='get_os'),
     url(r'^ordem-servico/visualizar-ordem-servico/$', views.visualizar_ordem_seervico, name='visualizar_ordem_seervico'),
+    url(r'^ordem-servico/visualizar-ordem-servico/(?P<ordem_servico_id>[0-9]+)/$', views.proposta_ordem_servico, name='propostas_all_os'),
     url(r'^ordem-servico/(?P<pk>[0-9]+)/editar/$', views.ordem_servico_edit, name='ordem_servico_editar'),
     url(r'^ordem-servico/ver/$', views.os_list, name='os_list'),
     url(r'^ordem-servico/(?P<ordem_servico_id>[0-9]+)/proposta/$', views.fazer_proposta_ordem_servico, name='get_proposta'),

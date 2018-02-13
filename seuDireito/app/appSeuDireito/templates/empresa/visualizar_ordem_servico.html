@@ -2,7 +2,7 @@
 {% load app_extras %}
 
 {% block title %}
-    Visualizar Ordens de Servico
+    Visualizar Ordem de Servico
 {% endblock %}
 {% block content %}
     <div id="page-wrapper" >
@@ -12,35 +12,35 @@
                 <div class="col-md-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Ordens de Serviço Existentes
+                            Ordens de Serviço
                         </div>
+
                         <div class="panel-body">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <form role="form" method="post">
-                                        {% csrf_token %}
-                                        {% for ordem in ordens_servico %}
-                                            <div class="form-group">
-                                                <h3>{{ ordem.titulo }}</h3>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Número da OS: </label>
-                                                {{ ordem.id }}
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label>Descrição: </label>
-                                                {{ ordem.descricao }}
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label>Status: </label>
-                                                {{ ordem.status}}
-                                            </div>
-                                            <hr/>
-                                        {% endfor %}
-                                    </form>
-                                </div>
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                    <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Empresa</th>
+                                        <th>Titulo</th>
+                                        <th>Descrição</th>
+                                        <th>Status</th>
+                                        <th>Propostas</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for os in ordens_servico %}
+                                        <tr class="odd gradeX">
+                                            <td>{{ os.id }}</td>
+                                            <td>{{ os.empresa }}</td>
+                                            <td>{{ os.titulo }}</td>
+                                            <td>{{ os.descricao }}</td>
+                                            <td>{{ os.status }}</td>
+                                            <td><a href="{% url 'appSeuDireito:propostas_all_os' ordem_servico_id=os.pk %}">Ver</a></td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>

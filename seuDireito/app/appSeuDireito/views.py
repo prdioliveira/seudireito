@@ -184,3 +184,9 @@ def concluir_ordem_servico(request, pk):
 def visualizar_ordem_seervico(request):
     ordens_servico = OrdemServico.objects.all()
     return render(request, 'empresa/visualizar_ordem_servico.html', {'ordens_servico': ordens_servico})
+
+
+@login_required()
+def proposta_ordem_servico(request, ordem_servico_id):
+    propostas = Proposta.objects.filter(ordem_servico_id=ordem_servico_id)
+    return render(request, 'empresa/propostas_ordem_servico.html', {'propostas': propostas})

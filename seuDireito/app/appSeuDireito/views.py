@@ -73,6 +73,13 @@ def empresa_edit(request, pk):
 
 
 @login_required()
+def empresa_delete(request, pk):
+    empresa = Empresa.objects.get(pk=pk)
+    empresa.delete()
+    return redirect('appSeuDireito:get_empresa')
+
+
+@login_required()
 def ordem_servico_cadastro(request):
     if request.method == 'POST':
         form = OrdemServicoForm(request.POST)
@@ -98,6 +105,13 @@ def ordem_servico_edit(request, pk):
     else:
         form = OrdemServicoForm(instance=ordem_servico)
         return render(request, 'empresa/ordem_servico_edit.html', {'form': form})
+
+
+@login_required()
+def ordem_servico_delete(request, pk):
+    ordem_servico = OrdemServico.objects.get(pk=pk)
+    ordem_servico.delete()
+    return redirect('appSeuDireito:get_os')
 
 
 @login_required()
@@ -134,6 +148,13 @@ def proposta_edit(request, pk, ordem_servico_id):
         form = PropostaForm(instance=proposta)
         ordem = OrdemServico.objects.get(pk=ordem_servico_id)
         return render(request, 'advogado/proposta_edit.html', {'form': form, 'ordem': ordem})
+
+
+@login_required()
+def proposta_delete(request, pk, ordem_servico_id):
+    proposta = Proposta.objects.get(pk=pk)
+    proposta.delete()
+    return redirect('appSeuDireito:get_proposta', ordem_servico_id=ordem_servico_id)
 
 
 @login_required()
